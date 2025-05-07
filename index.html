@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEI - Micro:bit e Jogo de Memória Binária</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3d);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(15px);
+    }
+
+    .gallery {
+      flex: 1 1 50%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .text-area {
+      flex: 1 1 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 15px;
+      min-height: 150px;
+      outline: none;
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    .modal:target {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="gallery">
+      <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 1rem;">Aulas práticas e interativas com o uso da placa Micro:bit e o jogo da memória binária para fixação de conceitos computacionais e lógicos.</p>
+      <a href="#imgModal"><img src="Rob6.1.jpeg" alt="Aula de Termodinâmica"></a>
+      <a href="#imgModal"><img src="1.jpeg" alt="Analise da termo"></a>
+      <a href="#imgModal"><img src="2.jpeg" alt=""></a>
+      <a href="#imgModal"><img src="3.jpeg" alt=""></a>
+      <a href="#imgModal"><img src="4.jpeg" alt="3º anos do ensino medio 3º A e B"></a>
+      <a href="#imgModal"><img src="5.jpeg" alt=""></a>
+      <a href="#imgModal"><img src="6.jpeg" alt=""></a>
+      <a href="#imgModal"><img src="7.jpeg" alt=""></a>
+      <a href="#imgModal"><img src="8.jpeg" alt=""></a>
+      <a href="#imgModal"><img src="9.jpeg" alt=""></a>
+    </div>
+    <div class="text-area">
+      <div>
+        <h2>Ações</h2>
+        <div class="box">
+          - Projeção de conteúdo explicativo sobre a Primeira Lei da Termodinâmica<br>
+          - Alunos divididos em grupos manipulando materiais como água, areia, metal e madeira<br>
+          - Medições práticas com termômetros e registro da variação de temperatura (ΔT)<br>
+          - Aplicação da fórmula Q = m·c·ΔT com cálculos reais durante a aula<br>
+          - Comparação entre os materiais com base nos resultados obtidos<br>
+          - Utilização de simulações em tela para reforço do conceito de energia e calor<br>
+          - Participação ativa dos alunos no debate dos resultados e construção de gráficos<br>
+        </div>
+      </div>
+      <div>
+        <h2>Evidências Comprovadas</h2>
+        <div class="box">
+          - Registros fotográficos dos alunos realizando os experimentos com atenção e foco<br>
+          - Cálculos demonstrando o uso da fórmula Q = m·c·ΔT resolvidos pelos próprios alunos<br>
+          - Participação ativa nas comparações entre materiais quanto à absorção de calor<br>
+          - Foi entregue na pratica com uso de lampada encandecente e materia primas.<br>
+          - Discussão coletiva sobre os resultados obtidos e relação com a teoria<br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="imgModal" class="modal" onclick="this.style.display='none'">
+    <img id="modalImage" src="" alt="Imagem Ampliada">
+  </div>
+
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const modalImage = document.getElementById('modalImage');
+    const modal = document.getElementById('imgModal');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.preventDefault();
+        modalImage.src = img.src;
+        modal.style.display = 'flex';
+      });
+    });
+  </script>
+</body>
+</html>
